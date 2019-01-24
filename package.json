@@ -1,0 +1,29 @@
+{
+  "name": "elk-sample-js-services",
+  "version": "0.1.0",
+  "description": "Sample Javascript frontend services to test the Elastic Stack",
+  "private": true,
+  "repository": "git@github.com:stratumn/elk-sample-js-services.git",
+  "author": "t-bast <bastien@stratumn.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "dev:users": "ts-node ./src/users/server.ts",
+    "dev:tasks": "ts-node ./src/tasks/server.ts",
+    "start:users": "nodemon ./build/users/server.js",
+    "start:tasks": "nodemon ./build/tasks/server.js",
+    "prod:users": "yarn build && yarn start:users",
+    "prod:tasks": "yarn build && yarn start:tasks"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.1",
+    "nodemon": "^1.18.9",
+    "ts-node": "^8.0.1",
+    "typescript": "^3.2.4"
+  }
+}
