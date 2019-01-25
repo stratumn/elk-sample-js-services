@@ -1,8 +1,18 @@
 import { Handler } from 'express';
-import { User } from './types';
+import { UserService } from './service';
 
 export const createUser: Handler = async (req, res) => {
   console.info('create user request');
   const { name } = req.body;
-  res.json(new User('42', name));
+
+  await preprocessUser();
+
+  const user = await new UserService().createUser(name);
+  res.json(user);
+};
+
+const preprocessUser = async () => {
+  console.info('pre-processing user...');
+  const timer = 100 * Math.random();
+  await new Promise(resolve => setTimeout(resolve, timer));
 };

@@ -1,8 +1,16 @@
 import { Handler } from 'express';
-import { User } from './types';
+import { UserService } from './service';
 
 export const getUsers: Handler = async (_, res) => {
   console.info('get users request');
-  const users = [new User('1', 'alice'), new User('2', 'bob')];
+
+  await checkAuthorization();
+
+  const users = await new UserService().getUsers();
   res.json(users);
+};
+
+const checkAuthorization = async () => {
+  console.info('checking authorization...');
+  await new Promise(resolve => setTimeout(resolve, 42));
 };
