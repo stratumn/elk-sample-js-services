@@ -1,6 +1,8 @@
 import { Handler } from 'express';
+import { User } from './types';
 
-export const getUsers: Handler = async (req, res) => {
+export const getUsers: Handler = async (_, res) => {
   console.info('get users request');
-  res.json('ok');
+  const users = [new User('1', 'alice'), new User('2', 'bob')];
+  res.json(users);
 };
