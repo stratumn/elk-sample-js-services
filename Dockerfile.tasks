@@ -1,0 +1,13 @@
+FROM node:8-alpine
+
+RUN mkdir -p /usr/src/app/build
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn
+
+COPY ./build ./build
+
+EXPOSE 8080
+CMD ["node", "build/tasks/server.js"]
