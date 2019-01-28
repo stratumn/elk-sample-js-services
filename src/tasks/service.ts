@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { Task } from './types';
+import { BACKEND_SERVICE } from './const';
 
 /**
  * Backend task service client.
  * Only the backend service can interact with the DB.
  */
 export class TaskService {
-  readonly endpoint: string = 'http://localhost:4002';
+  readonly endpoint: string = BACKEND_SERVICE;
 
   getUserTasks = async (userId: string): Promise<Task[]> => {
     const response = await axios.get<Task[]>(
