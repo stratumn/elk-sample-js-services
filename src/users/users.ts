@@ -9,8 +9,6 @@ export const getUsers: Handler = async (_, res) => {
   await checkAuthorization();
 
   const users = await new UserService().getUsers();
-  span.setTag('userCount', users.length);
-
   res.json(users);
 
   span.end();

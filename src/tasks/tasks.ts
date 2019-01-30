@@ -12,8 +12,6 @@ export const getUserTasks: Handler = async (req, res) => {
   await checkAuthorization();
 
   const tasks = await new TaskService().getUserTasks(userId);
-  span.setTag('taskCount', tasks.length);
-
   res.json(tasks);
 
   span.end();
